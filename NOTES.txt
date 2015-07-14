@@ -24,6 +24,8 @@ Coffee: global vars with @ (collections etc)
 
 
 
+
+
 "Remove autopublish"
 publish on server, subscribe on client
 Meteor.publish(NAAM_GEVEN, FUNCTIE)
@@ -44,7 +46,7 @@ routing eigenschappen: layoutTemplate, loadingTemplate, notFoundTemplate
 
 Tracker.autorun( DoIets(VARIABELEN)  )
 run 1x en daarna steeds wanneer VARIABELEN veranderen van waarde
-  
+
 
 Form submission -> .coffee kan fixen (e.preventDefault)
 
@@ -54,3 +56,13 @@ checken:  pathfor
 
 
 Lokale collection (bijv errors)
+
+
+
+Publish / subscribe kan van route afhangen (bijv alleen laden bij bepaalde /path/)
+Denormalization -> sla bijv counter hard op zodat niet een hele array geladen hoeft te worden
+
+
+
+Je kan een functie elke x seconden callen voor reactivity purposes wanneer
+dit niet automatisch kan (bijv met externe api)

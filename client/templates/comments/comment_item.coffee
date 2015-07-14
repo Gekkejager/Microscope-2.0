@@ -1,2 +1,2 @@
 Template.commentItem.helpers submittedText: ->
-  @.submitted.toString()
+  @submitted.toString()

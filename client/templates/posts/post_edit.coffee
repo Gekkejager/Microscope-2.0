@@ -11,7 +11,7 @@ Template.postEdit.events
   'submit form': (e) ->
     e.preventDefault()
 
-    currentPostId = @._id
+    currentPostId = @_id
 
     postProperties =
       url: $(e.target).find('[name=url]').val()
