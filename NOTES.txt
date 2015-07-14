@@ -1,0 +1,56 @@
+
+Template inclusion tag:
+{{> TEMPLATE_NAME}}
+TEMPLATE_NAME komt van de html tag (<template name="myTemplate"></template>)
+
+Block helpers:
+{{#each ITEM}} DO_STUFF {{/each}}
+Flow van de template
+
+Expression:
+{{MYVAR}}
+property van object of return value van een template helper
+
+Templates (html/jade files) kunnen HELPERS hebben (js/coffee)
+Deze helpers bepalen de daadwerkelijke content
+Syntax (coffee): Templates.MyTemplate.helpers MyVariable : MyValue
+Call op de 'helpers' functie
+
+
+TO CHECK:
+Self-invoked / anonymous function (coffee)
+
+Coffee: global vars with @ (collections etc)
+
+
+
+"Remove autopublish"
+publish on server, subscribe on client
+Meteor.publish(NAAM_GEVEN, FUNCTIE)
+Meteor.subscribe
+
+{{> yield}} stuurt door naar Router.route ....
+
+Router - Doorsturen naar juiste pagina
+{{>spinner}} komt van sacha:spin package (kan je gewoon gebruiken)
+
+Dynamic routing: Router.route '/posts/:VARNAME' <-- :VARNAME stopt alles na /posts/ in
+de params array onder de property 'VARNAME'
+
+routing eigenschappen: layoutTemplate, loadingTemplate, notFoundTemplate
+
+
+
+
+Tracker.autorun( DoIets(VARIABELEN)  )
+run 1x en daarna steeds wanneer VARIABELEN veranderen van waarde
+  
+
+Form submission -> .coffee kan fixen (e.preventDefault)
+
+
+checken: _ library
+checken:  pathfor
+
+
+Lokale collection (bijv errors)
