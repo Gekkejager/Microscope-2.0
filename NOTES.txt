@@ -66,3 +66,10 @@ Denormalization -> sla bijv counter hard op zodat niet een hele array geladen ho
 
 Je kan een functie elke x seconden callen voor reactivity purposes wanneer
 dit niet automatisch kan (bijv met externe api)
+
+It’s important to note that a path of the form /:parameter? will match every possible path. Since
+each route will be parsed successively to see if it matches the current path, we need to make sure
+we organize our routes in order of decreasing specificity.
+In other words, routes that target more specific routes like /posts/:_id should come first, and
+our postsList route should be moved to the bottom of the routes group since it pretty much
+matches everything, (~p.210)

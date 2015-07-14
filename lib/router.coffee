@@ -4,11 +4,10 @@ Router.configure
   notFoundTemplate: 'notFound'
   waitOn: ->
     [
-      Meteor.subscribe 'posts'
       Meteor.subscribe 'notifications'
     ]
 
-Router.route '/', name: 'postsList'
+
 Router.route '/post/:_id',
   name: 'postPage'
   waitOn: ->
@@ -18,6 +17,19 @@ Router.route '/posts/:_id/edit',
   name: 'postEdit'
   data: -> Posts.findOne @params._id
 Router.route '/submit', name: 'postSubmit'
+
+Router.route '/:postsLimit?',
+  name: 'postsList'
+  waitOn: ->
+    limit = parseInt(@params.postsLimit) or 5
+    Meteor.subscribe 'posts',
+      sort: submitted: -1
+      limit: limit
+  data: ->
+    limit = parseInt(@params.postsLimit) or 5
+    posts: Posts.find({}, sort: submitted: -1, limit: limit)
+
+
 
 requireLogin = ->
   if ! Meteor.user()
