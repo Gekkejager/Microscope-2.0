@@ -4,6 +4,4 @@ Template.postItem.helpers
   domain: ->
     a = document.createElement('a')
     a.href = @url
-    a.hostname
-  commentsCount: ->
-    Comments.find(postId: @._id).count()
+    a.hostname  
