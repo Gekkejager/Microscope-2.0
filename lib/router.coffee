@@ -17,8 +17,9 @@ Router.configure
       sort: submitted: -1
       limit: @postsLimit()
     }
-  waitOn: ->
-    Meteor.subscribe 'posts', @findOptions()
+  subscriptions: ->
+    @postSub = Meteor.subscribe 'posts', @findOptions()
+    return
   posts: ->
     Posts.find({}, @findOptions())
   data: ->
@@ -32,11 +33,18 @@ Router.configure
 Router.route '/post/:_id',
   name: 'postPage'
   waitOn: ->
-    Meteor.subscribe 'comments', @params._id
+    [
+      Meteor.subscribe 'singlePost', @params._id
+      Meteor.subscribe 'comments', @params._id
+    ]
   data: -> Posts.findOne @params._id
+
 Router.route '/posts/:_id/edit',
   name: 'postEdit'
+  waitOn: ->
+    Meteor.subscribe 'singlePost', @params._id
   data: -> Posts.findOne @params._id
+
 Router.route '/submit', name: 'postSubmit'
 
 Router.route '/:postsLimit?',

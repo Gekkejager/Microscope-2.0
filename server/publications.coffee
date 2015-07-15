@@ -1,8 +1,12 @@
 Meteor.publish 'posts', (options) ->
   check options,
-    sort: Object,
-    limit: Number
+    limit: Number,
+    sort: Object
   Posts.find({}, options)
+
+Meteor.publish 'singlePost', (postId) ->
+  check postId, String
+  Posts.find postId
 
 Meteor.publish 'comments', (postId) ->
   check postId, String

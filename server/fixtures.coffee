@@ -52,6 +52,6 @@ if Posts.find().count() == 0
       userId: tom._id
       author: tom.profile.name
       url: 'http://google.com/?q=test-' + i
-      submitted: new Date(now - 300 * 3600 * 1000)
+      submitted: new Date((now - 290 * 3600 * 1000) + i * 500)
       commentsCount: 0
     i++
