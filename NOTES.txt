@@ -23,7 +23,8 @@ Self-invoked / anonymous function (coffee)
 Coffee: global vars with @ (collections etc)
 
 
-
+IRONROUTER:
+  xyzController matcht automatisch met xyz
 
 
 "Remove autopublish"
