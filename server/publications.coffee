@@ -1,8 +1,11 @@
-Meteor.publish 'posts', (options) ->
-  check options,
-    limit: Number,
-    sort: Object
-  Posts.find({}, options)
+Meteor.publish 'posts', (limit, sort) ->
+  Posts.find({}, {limit:limit, sort: sort})
+#  Counts.publish this, 'totalPostCount', Posts.find({}, {limit:limit, sort: submitted: -1})
+#  return
+  #check options,
+    #limit: Number,
+    #sort: Object
+  #Posts.find({}, options)
 
 Meteor.publish 'singlePost', (postId) ->
   check postId, String

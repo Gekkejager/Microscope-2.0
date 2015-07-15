@@ -7,29 +7,6 @@ Router.configure
       Meteor.subscribe 'notifications'
     ]
 
-@PostsListController = RouteController.extend
-  template: 'postsList'
-  increment: 5
-  postsLimit: ->
-    parseInt(@params.postsLimit) or @increment
-  findOptions: ->
-    {
-      sort: submitted: -1
-      limit: @postsLimit()
-    }
-  subscriptions: ->
-    @postSub = Meteor.subscribe 'posts', @findOptions()
-    return
-  posts: ->
-    Posts.find({}, @findOptions())
-  data: ->
-    hasMore = @posts().count() == @postsLimit()
-    nextPath = @route.path(postsLimit: @postsLimit() + @increment)
-    {
-      posts: @posts()
-      nextPath: if hasMore then nextPath else null
-    }
-
 Router.route '/post/:_id',
   name: 'postPage'
   waitOn: ->
@@ -47,7 +24,7 @@ Router.route '/posts/:_id/edit',
 
 Router.route '/submit', name: 'postSubmit'
 
-Router.route '/:postsLimit?',
+Router.route '/',
   name: 'postsList'
 
 requireLogin = ->

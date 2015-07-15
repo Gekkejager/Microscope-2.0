@@ -74,3 +74,14 @@ we organize our routes in order of decreasing specificity.
 In other words, routes that target more specific routes like /posts/:_id should come first, and
 our postsList route should be moved to the bottom of the routes group since it pretty much
 matches everything, (~p.210)
+
+
+
+
+
+PAGINATION
+- Ofwel via meteor (zie commit)
+- Ofwel package: meteor add percolate:paginated-subscription
+          https://atmospherejs.com/percolate/paginated-subscription
+        #counter:
+        #  meteor add tmeasday:publish-counts HOEFT NIET
